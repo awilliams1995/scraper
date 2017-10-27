@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .single
+    .single__hero
+      img.single__image(src=`/uploads/${article.photo || 'article.png'}`)
+      h2.title.title--single
+        a(href=`/article/${article.slug}`) #{article.name}
+
+  .single__details.inner
+    img.single__map(src=h.staticMap(article.location.coordinates))
+    p.single__location=article.location.address
+    p= article.description
+
+    if article.tags
+      ul.tags
+        each tag in article.tags
+          li.tag
+            a.tag__link(href=`/tags/${tag}`)
+              span.tag__text  ##{tag}

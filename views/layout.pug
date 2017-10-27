@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    block header
+      header.top
+        nav.nav
+          .nav__section.nav__section--pages
+            li.nav__item
+              a.nav__link.nav__link--logo(href="/scrape") click here to scrape
+            li.nav__item
+              a.nav__link.nav__link--logo(href="/hearts") click here to view hearts
+    .content
+      block content
+
+    block scripts
+      script(src="/dist/App.bundle.js")

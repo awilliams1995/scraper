@@ -1,0 +1,22 @@
+mixin articleCard(article = {})
+	.article
+		.article__hero
+			.article__actions
+			h2.title= article.name
+				a(href=`/article/${article.slug||"doesNotExist"}`)= article.name
+		.article__details
+			br
+			br
+			if !active
+				form(action="/addArticle" method="POST")
+					input(type="text" value=article.name, name="name" style="display:none")
+					input(type="text" value=article.summary, name="summary" style="display:none")
+					button(type="submit") Save Article
+			else
+					button.unhide(data-id=article._id) add note
+					form(id=(article._id.toString()),action=`/addNote/${article._id}`,style="display:none",method="POST")
+						textarea(name="note", cols="30", rows="5")=article.note
+						button(type="submit") submit
+			- let description = article.summary.split(' ');
+			- if (description.length >25){ description = description.slice(0,25).join(' ')+"..."} else{ description = description.join(' ')}
+			p=description

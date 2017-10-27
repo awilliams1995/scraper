@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_articleCard
+
+
+block content 
+	.inner
+		h2=title
+		.articles
+			each article in articles
+				+articleCard(article)
+
+
+
